@@ -1,1 +1,1 @@
-AQICN API REST-enabling interface to make original API more dev-friendly
+AQICN API REST-enabling interface to make original API more dev-friendly. Original API returns 200 OK on errors (invalid key, exceeded quota limit).
