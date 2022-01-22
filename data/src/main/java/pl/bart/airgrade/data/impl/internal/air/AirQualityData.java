@@ -1,4 +1,4 @@
-package pl.bart.airgrade.data.impl.internal;
+package pl.bart.airgrade.data.impl.internal.air;
 
 import lombok.Builder;
 import lombok.Getter;

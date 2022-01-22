@@ -4,4 +4,6 @@ public class RestUri {
     public static final String URI_BASE = "/api";
 
     public static final String AIR_QUALITY_DATA = URI_BASE + "/air";
+
+    public static final String WEATHER_FORECAST = URI_BASE + "/weather";
 }

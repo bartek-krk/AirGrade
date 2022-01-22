@@ -2,9 +2,9 @@ package pl.bart.airgrade.data.impl.mapper;
 
 import pl.bart.airgrade.data.impl.external.aqicn.code.AqicnApiErrorCode;
 import pl.bart.airgrade.data.impl.external.aqicn.response.*;
-import pl.bart.airgrade.data.impl.internal.AirQualityData;
-import pl.bart.airgrade.data.impl.internal.AirQualityDataLocation;
-import pl.bart.airgrade.data.impl.internal.AirQualityDataPollutions;
+import pl.bart.airgrade.data.impl.internal.air.AirQualityData;
+import pl.bart.airgrade.data.impl.internal.air.AirQualityDataLocation;
+import pl.bart.airgrade.data.impl.internal.air.AirQualityDataPollutions;
 import pl.bart.airgrade.data.impl.log.AqicnApiException;
 import pl.bart.airgrade.data.impl.log.AqicnApiQuotaLimitExceededException;
 import pl.bart.airgrade.data.impl.log.AqicnInvalidApiKeyException;

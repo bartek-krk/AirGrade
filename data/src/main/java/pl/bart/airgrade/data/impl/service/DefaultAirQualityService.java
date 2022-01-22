@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import pl.bart.airgrade.data.api.service.AirQualityService;
 import pl.bart.airgrade.data.impl.external.aqicn.response.AqicnApiResponse;
-import pl.bart.airgrade.data.impl.internal.AirQualityData;
+import pl.bart.airgrade.data.impl.internal.air.AirQualityData;
 import pl.bart.airgrade.data.impl.mapper.AirQualityDataMapper;
 
 @Service

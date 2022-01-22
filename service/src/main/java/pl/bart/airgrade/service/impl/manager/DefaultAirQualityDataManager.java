@@ -5,7 +5,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import pl.bart.airgrade.data.api.service.AirQualityService;
-import pl.bart.airgrade.data.impl.internal.AirQualityData;
+import pl.bart.airgrade.data.impl.internal.air.AirQualityData;
 import pl.bart.airgrade.service.api.manager.AirQualityDataManager;
 
 @Component
