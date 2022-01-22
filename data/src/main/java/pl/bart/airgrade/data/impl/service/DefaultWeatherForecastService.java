@@ -11,10 +11,19 @@ import org.springframework.web.client.RestTemplate;
 import pl.bart.airgrade.data.api.service.WeatherForecastService;
 import pl.bart.airgrade.data.impl.external.stormweather.response.StormWeatherApiResponse;
 import pl.bart.airgrade.data.impl.internal.weather.WeatherForecast;
+import pl.bart.airgrade.data.impl.internal.weather.WeatherForecastRecord;
+import pl.bart.airgrade.data.impl.internal.weather.WeatherNow;
 import pl.bart.airgrade.data.impl.log.StormWeatherApiException;
 import pl.bart.airgrade.data.impl.log.StormWeatherApiForbiddenException;
 import pl.bart.airgrade.data.impl.log.StormWeatherApiInvalidCoordinatesException;
 import pl.bart.airgrade.data.impl.mapper.WeatherForecastMapper;
+
+import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
+import java.time.ZoneOffset;
+import java.time.temporal.ChronoUnit;
+import java.util.Comparator;
+import java.util.List;
 
 
 @Service
@@ -49,5 +58,19 @@ public class DefaultWeatherForecastService implements WeatherForecastService {
         } catch (Exception e) {
             throw new StormWeatherApiException(0);
         }
+    }
+
+    @Override
+    public WeatherNow getByCoordinatesNow(double latitude, double longitude) {
+        final WeatherForecast forecast = this.getByCoordinates(latitude, longitude);
+        final List<WeatherForecastRecord> forecastRecords = forecast.getRecords();
+
+        final LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
+        WeatherForecastRecord closest = forecastRecords.stream()
+                .filter(record -> record.getUtc().isBefore(now))
+                .min(Comparator.comparingLong(record -> ChronoUnit.MINUTES.between(record.getUtc(), now)))
+                .orElse(null);
+
+        return WeatherNow.builder().weather(closest).metadata(forecast.getMetadata()).build();
     }
 }

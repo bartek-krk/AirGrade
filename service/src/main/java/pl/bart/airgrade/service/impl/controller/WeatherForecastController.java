@@ -7,17 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.bart.airgrade.data.impl.internal.weather.WeatherForecast;
+import pl.bart.airgrade.data.impl.internal.weather.WeatherNow;
 import pl.bart.airgrade.service.api.manager.WeatherForecastManager;
 
 @RestController
-@RequestMapping(RestUri.WEATHER_FORECAST)
 public class WeatherForecastController {
 
     @Autowired
     private WeatherForecastManager weatherForecastManager;
 
-    @GetMapping
+    @GetMapping(RestUri.WEATHER_FORECAST)
     public ResponseEntity<WeatherForecast> get(@RequestParam(name = "lat") double latitude, @RequestParam(name = "lon") double longitude) {
         return weatherForecastManager.getByCoordinates(latitude, longitude);
+    }
+
+    @GetMapping(RestUri.WEATHER_NOW)
+    public ResponseEntity<WeatherNow> getNow(@RequestParam(name = "lat") double latitude, @RequestParam(name = "lon") double longitude) {
+        return weatherForecastManager.getByCoordinatesNow(latitude, longitude);
     }
 }
