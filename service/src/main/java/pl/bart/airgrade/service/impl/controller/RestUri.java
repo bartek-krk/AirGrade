@@ -8,4 +8,6 @@ public class RestUri {
     public static final String WEATHER = URI_BASE + "/weather";
     public static final String WEATHER_FORECAST = WEATHER + "/forecast";
     public static final String WEATHER_NOW = WEATHER + "/now";
+
+    public static final String OVERVIEW = URI_BASE + "/overview";
 }

@@ -70,7 +70,7 @@ public class AirQualityDataMapper {
                     .build();
 
             return AirQualityData.builder()
-                    .updateTimeUtc(utc)
+                    .utc(utc)
                     .location(location)
                     .pollutions(pollutions)
                     .build();

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Setter
 @Builder
 public class AirQualityData {
-    private LocalDateTime updateTimeUtc;
+    private LocalDateTime utc;
     private AirQualityDataLocation location;
     private AirQualityDataPollutions pollutions;
 }

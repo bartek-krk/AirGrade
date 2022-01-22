@@ -19,7 +19,6 @@ import pl.bart.airgrade.data.impl.log.StormWeatherApiInvalidCoordinatesException
 import pl.bart.airgrade.data.impl.mapper.WeatherForecastMapper;
 
 import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
@@ -43,7 +42,7 @@ public class DefaultWeatherForecastService implements WeatherForecastService {
             final RestTemplate rt = new RestTemplate();
             final HttpHeaders headers = new HttpHeaders();
             headers.set(RAPID_API_KEY_HEADER, apiKey);
-            final HttpEntity<String> entity = new HttpEntity<String>(headers);
+            final HttpEntity<String> entity = new HttpEntity<>(headers);
             ResponseEntity<StormWeatherApiResponse> response = rt.exchange(url, HttpMethod.GET, entity, StormWeatherApiResponse.class);
             return WeatherForecastMapper.map(response.getBody());
         } catch (HttpClientErrorException clientErrorException) {
