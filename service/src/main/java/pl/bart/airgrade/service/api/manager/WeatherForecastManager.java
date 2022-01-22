@@ -5,6 +5,6 @@ import pl.bart.airgrade.data.impl.internal.weather.WeatherForecast;
 import pl.bart.airgrade.data.impl.internal.weather.WeatherNow;
 
 public interface WeatherForecastManager {
-    ResponseEntity<WeatherForecast> getByCoordinates(double latitude, double longitude);
+    ResponseEntity<WeatherForecast> getByCoordinates(double latitude, double longitude, long limit);
     ResponseEntity<WeatherNow> getByCoordinatesNow(double latitude, double longitude);
 }

@@ -16,8 +16,8 @@ public class DefaultWeatherForecastManager implements WeatherForecastManager {
     private WeatherForecastService weatherForecastService;
 
     @Override
-    public ResponseEntity<WeatherForecast> getByCoordinates(double latitude, double longitude) {
-        final WeatherForecast resonse = weatherForecastService.getByCoordinates(latitude, longitude);
+    public ResponseEntity<WeatherForecast> getByCoordinates(double latitude, double longitude, long limit) {
+        final WeatherForecast resonse = weatherForecastService.getFutureByCoordinates(latitude, longitude, limit);
         return new ResponseEntity<>(resonse, HttpStatus.OK);
     }
 

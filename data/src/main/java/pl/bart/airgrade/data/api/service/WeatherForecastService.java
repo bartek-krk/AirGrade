@@ -6,5 +6,6 @@ import pl.bart.airgrade.data.impl.internal.weather.WeatherNow;
 
 public interface WeatherForecastService {
     WeatherForecast getByCoordinates(double latitude, double longitude);
+    WeatherForecast getFutureByCoordinates(double latitude, double longitude, long limit);
     WeatherNow getByCoordinatesNow(double latitude, double longitude);
 }

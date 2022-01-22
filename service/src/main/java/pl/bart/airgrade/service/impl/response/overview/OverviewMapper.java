@@ -2,9 +2,6 @@ package pl.bart.airgrade.service.impl.response.overview;
 
 import pl.bart.airgrade.data.impl.internal.air.AirQualityData;
 import pl.bart.airgrade.data.impl.internal.weather.WeatherNow;
-import pl.bart.airgrade.service.api.manager.OverviewManager;
-
-import java.time.LocalDateTime;
 
 public class OverviewMapper {
     public static OverviewResponse map(AirQualityData airQualityData, WeatherNow weather) {

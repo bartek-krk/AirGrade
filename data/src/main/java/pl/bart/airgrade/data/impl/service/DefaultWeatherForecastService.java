@@ -23,6 +23,7 @@ import java.time.ZoneOffset;
 import java.time.temporal.ChronoUnit;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 
 @Service
@@ -57,6 +58,18 @@ public class DefaultWeatherForecastService implements WeatherForecastService {
         } catch (Exception e) {
             throw new StormWeatherApiException(0);
         }
+    }
+
+    @Override
+    public WeatherForecast getFutureByCoordinates(double latitude, double longitude, long limit) {
+        WeatherForecast forecast = this.getByCoordinates(latitude, longitude);
+        final LocalDateTime now = LocalDateTime.now(ZoneOffset.UTC);
+        List<WeatherForecastRecord> futureRecords = forecast.getRecords().stream()
+                .filter(record -> record.getUtc().isAfter(now))
+                .limit(limit)
+                .collect(Collectors.toList());
+        forecast.setRecords(futureRecords);
+        return forecast;
     }
 
     @Override

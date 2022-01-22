@@ -17,8 +17,11 @@ public class WeatherForecastController {
     private WeatherForecastManager weatherForecastManager;
 
     @GetMapping(RestUri.WEATHER_FORECAST)
-    public ResponseEntity<WeatherForecast> get(@RequestParam(name = "lat") double latitude, @RequestParam(name = "lon") double longitude) {
-        return weatherForecastManager.getByCoordinates(latitude, longitude);
+    public ResponseEntity<WeatherForecast> get(
+            @RequestParam(name = "lat") double latitude,
+            @RequestParam(name = "lon") double longitude,
+            @RequestParam(name = "limit", required = false, defaultValue = "20") long limit) {
+        return weatherForecastManager.getByCoordinates(latitude, longitude, limit);
     }
 
     @GetMapping(RestUri.WEATHER_NOW)
